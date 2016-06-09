@@ -32,3 +32,8 @@ counter_rate = counter_rate_fragment.attribute('rate').value.to_f
 print "COUNTER RATE:"
 print counter_rate
 puts
+
+conversion_rate = (1/base_rate) * counter_rate
+print "CONVERSION RATE:"
+print conversion_rate
+puts

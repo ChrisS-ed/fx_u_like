@@ -37,3 +37,8 @@ conversion_rate = (1/base_rate) * counter_rate
 print "CONVERSION RATE:"
 print conversion_rate
 puts
+
+print "DATE:"
+print Date.today
+puts
+print Date.parse('20/10/2011')    

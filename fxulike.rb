@@ -1,6 +1,6 @@
 require 'sinatra'
 require 'sinatra/contrib/all' if development?
-require_relative './exchangerate/lib/exchangerate.rb'
+require_relative './exchangerate/lib/exchangerate'
 
 get '/'  do
 	erb :home

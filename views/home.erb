@@ -18,7 +18,7 @@
     <header>
       <h1>Conversion</h1>
     </header>
-    <p>Original amount: <%= @amount %></p>
-    <p>Converted amount: <%= @result %></p>
+    <p>Original amount: <%= sprintf "%.2f", @amount %> <%= @base_currency %></p>
+    <p>Converted amount: <%= sprintf "%.2f", @result %> <%= @counter_currency %></p>
   </section>
 <% end %>

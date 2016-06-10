@@ -11,3 +11,14 @@
 	<br>
 	<button>Convert</button>
 </form>
+
+<% if @result %>
+  <section>
+  	<hr/>
+    <header>
+      <h1>Conversion</h1>
+    </header>
+    <p>Original amount: <%= @amount %></p>
+    <p>Converted amount: <%= @result %></p>
+  </section>
+<% end %>

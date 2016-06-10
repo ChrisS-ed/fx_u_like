@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'sinatra/contrib/all' if development?
+require_relative './exchangerate/lib/exchangerate.rb'
 
 get '/'  do
 	erb :home
@@ -22,8 +23,17 @@ get '/convert' do
 	puts @counter_currency
 	puts "---------------------------------------------------------------"
 
-  	# @conversion_rate = ExchangeRate.at(@date, @base_currency, @counter_currency)
-  	# @result = @conversion_rate * @amount
+	# @myExchangeRate = ExchangeRate.new
+	# @conversion_rate = @myExchangeRate.at(@date, @base_currency, @counter_currency)
+
+  	@conversion_rate = ExchangeRate.at(@date, @base_currency, @counter_currency)
+
+  	puts "********************************************"
+  	print "RETURNED CONVERSION RATE: "
+  	puts @conversion_rate
+  	puts "********************************************"
+
+  	@result = @conversion_rate * @amount
 
   	erb :home
 end

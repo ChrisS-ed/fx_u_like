@@ -3,25 +3,29 @@
 <% CURRENCIES = ["USD", "JPY", "BGN", "CZK", "DKK", "GBP", "HUF", "PLN", "RON", "SEK", "CHF", "NOK", "HRK", "RUB", "TRY", "AUD", "BRL", "CAD", "CNY", "HKD", "IDR", "ILS", "INR", "KRW", "MXN", "MYR", "NZD", "PHP", "SGD", "THB", "ZAR"] %>
 
 <form action='/convert' method='get'>
-	Date: <input type='date_field' value='<%= Date.today.strftime("%d/%m/%Y") %>' name='date'/><br>
+	Date: <input type='date_field' value='<%= Date.today.strftime("%d/%m/%Y") %>' name='date' id='datebox'/><br>
 	<br>
-	Amount: <input type='text' name='amount'/><br>
-	<br>
-	From: <select name='base_currency'>
-  		<% CURRENCIES.each do |currency| %>
-     		<option value=<%= currency %>><%= currency %></option>
-   		<% end %>
-	</select>
-	<br>
-	<br>
-	To: <select name='counter_currency'>
-		<% CURRENCIES.each do |currency| %>
-     		<option value=<%= currency %>><%= currency %></option>
-   		<% end %>
-  	</select>
-	<br>
-	<br>
-	<button>Convert</button>
+	
+	Amount: <input type='text' name='amount' id='amountbox'/>
+	
+	<div id='currenciesinput'>
+		From: <select name='base_currency'>
+	  		<% CURRENCIES.each do |currency| %>
+	     		<option value=<%= currency %>><%= currency %></option>
+	   		<% end %>
+		</select>
+		<br>
+		<br>
+		To: <select name='counter_currency'>
+			<% CURRENCIES.each do |currency| %>
+	     		<option value=<%= currency %>><%= currency %></option>
+	   		<% end %>
+	  	</select>
+		<br>
+		<br>
+	</div>
+
+	<button id='convertbutton'>Convert</button>
 </form>
 
 <% if @error %>

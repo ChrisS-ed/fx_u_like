@@ -1,0 +1,21 @@
+body {
+  	margin-top: 50px;
+  	margin-left: 150px;        
+}
+
+#datebox {
+	width: 75px;
+}
+
+#amountbox {
+	width: 55px;
+}
+
+#currenciesinput {
+	display: inline-table;
+	margin-left: 100px;
+}
+
+#convertbutton {
+	display: block;
+}

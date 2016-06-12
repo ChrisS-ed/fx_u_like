@@ -7,8 +7,18 @@ get '/'  do
 end
 	
 get '/convert' do
-	@date = Date.parse(params[:date])
+	
+	begin
+		@date = Date.parse(params[:date])
+		rescue ArgumentError
+			puts "NO DATE ENTERED"
+			@error = "Invalid date entered"
+			halt erb(:home)
+	end
+
   	@amount = params[:amount].to_f
+
+
   	@base_currency = params[:base_currency]
   	@counter_currency = params[:counter_currency]
 

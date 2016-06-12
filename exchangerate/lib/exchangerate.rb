@@ -3,7 +3,12 @@ require 'nokogiri'
 require 'open-uri'
 
 module ExchangeRate
-  
+
+    xml_data = open('http://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml').read
+    puts "*** DOWNLOADING ECB DATA ***"
+    puts
+    RATES_DATA = Nokogiri::XML(xml_data)
+
 	def self.at(date, base_currency, counter_currency)
 
         puts "---------------------------------------------------------------"
@@ -15,18 +20,15 @@ module ExchangeRate
         puts counter_currency
         puts "---------------------------------------------------------------"
 
-		xml_data = open('http://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml').read
-		rates_data = Nokogiri::XML(xml_data)
-
     	# look for date in xml file
 
-    	rates_for_date = rates_data.css("[time='#{date.to_s}']").children
+    	rates_for_date = RATES_DATA.css("[time='#{date.to_s}']").children
     	print "RATES"
     	print rates_for_date
 
     	# fetch base and counter rates for that date
 
-        base_rate_fragment = rates_for_date.css("[currency='#{base_currency}']")
+        base_rate_fragment = RATES_DATA.css("[currency='#{base_currency}']")
         print "BASE RATE FRAGMENT"
         print base_rate_fragment
         puts
@@ -35,7 +37,7 @@ module ExchangeRate
         print base_rate
         puts
 
-        counter_rate_fragment = rates_for_date.css("[currency='#{counter_currency}']")
+        counter_rate_fragment = RATES_DATA.css("[currency='#{counter_currency}']")
         print "COUNTER RATE FRAGMENT"
         print counter_rate_fragment
         puts

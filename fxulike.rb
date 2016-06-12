@@ -23,9 +23,6 @@ get '/convert' do
 	puts @counter_currency
 	puts "---------------------------------------------------------------"
 
-	# @myExchangeRate = ExchangeRate.new
-	# @conversion_rate = @myExchangeRate.at(@date, @base_currency, @counter_currency)
-
   	@conversion_rate = ExchangeRate.at(@date, @base_currency, @counter_currency)
 
   	puts "********************************************"

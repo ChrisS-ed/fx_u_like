@@ -1,6 +1,6 @@
 <h1>FX-u-like</h1>
 
-<% CURRENCIES = ["USD", "JPY", "BGN", "CZK", "DKK", "GBP", "HUF", "PLN", "RON", "SEK", "CHF", "NOK", "HRK", "RUB", "TRY", "AUD", "BRL", "CAD", "CNY", "HKD", "IDR", "ILS", "INR", "KRW", "MXN", "MYR", "NZD", "PHP", "SGD", "THB", "ZAR"] %>
+<% CURRENCIES = ["GBP", "EUR", "USD", "JPY", "BGN", "CZK", "DKK", "HUF", "PLN", "RON", "SEK", "CHF", "NOK", "HRK", "RUB", "TRY", "AUD", "BRL", "CAD", "CNY", "HKD", "IDR", "ILS", "INR", "KRW", "MXN", "MYR", "NZD", "PHP", "SGD", "THB", "ZAR"] %>
 
 <form action='/convert' method='get'>
 	Date: <input type='date_field' value='<%= Date.today.strftime("%d/%m/%Y") %>' name='date' id='datebox'/><br>

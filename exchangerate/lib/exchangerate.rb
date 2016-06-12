@@ -35,28 +35,34 @@ module ExchangeRate
         print "RATES: "
     	puts rates_for_date
         puts
-        
-        # raise DateNotFoundError if RATES_DATA.css("[time='#{date.to_s}']").children.empty?
 
     	# fetch base and counter rates for that date
 
-        base_rate_fragment = rates_for_date.css("[currency='#{base_currency}']")
-        print "BASE RATE FRAGMENT"
-        puts base_rate_fragment
-        puts
-        base_rate = base_rate_fragment.attribute('rate').value.to_f
-        print "BASE RATE:"
-        puts base_rate
-        puts
+        if base_currency=="EUR"
+            base_rate=1.00
+        else
+            base_rate_fragment = rates_for_date.css("[currency='#{base_currency}']")
+            print "BASE RATE FRAGMENT"
+            puts base_rate_fragment
+            puts
+            base_rate = base_rate_fragment.attribute('rate').value.to_f
+            print "BASE RATE:"
+            puts base_rate
+            puts
+        end
 
-        counter_rate_fragment = rates_for_date.css("[currency='#{counter_currency}']")
-        print "COUNTER RATE FRAGMENT"
-        print counter_rate_fragment
-        puts
-        counter_rate = counter_rate_fragment.attribute('rate').value.to_f
-        print "COUNTER RATE:"
-        print counter_rate
-        puts
+        if counter_currency=="EUR"
+            counter_rate=1.00
+        else
+            counter_rate_fragment = rates_for_date.css("[currency='#{counter_currency}']")
+            print "COUNTER RATE FRAGMENT"
+            print counter_rate_fragment
+            puts
+            counter_rate = counter_rate_fragment.attribute('rate').value.to_f
+            print "COUNTER RATE:"
+            print counter_rate
+            puts
+        end
 
         # calculate and return overall exchange rate
 

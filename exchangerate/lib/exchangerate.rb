@@ -23,21 +23,22 @@ module ExchangeRate
     	# look for date in xml file
 
     	rates_for_date = RATES_DATA.css("[time='#{date.to_s}']").children
-    	print "RATES"
-    	print rates_for_date
+        # raise DateNotFound if rates_for_date.nil?
+    	print "RATES: "
+    	puts rates_for_date
 
     	# fetch base and counter rates for that date
 
-        base_rate_fragment = RATES_DATA.css("[currency='#{base_currency}']")
+        base_rate_fragment = rates_for_date.css("[currency='#{base_currency}']")
         print "BASE RATE FRAGMENT"
-        print base_rate_fragment
+        puts base_rate_fragment
         puts
         base_rate = base_rate_fragment.attribute('rate').value.to_f
         print "BASE RATE:"
-        print base_rate
+        puts base_rate
         puts
 
-        counter_rate_fragment = RATES_DATA.css("[currency='#{counter_currency}']")
+        counter_rate_fragment = rates_for_date.css("[currency='#{counter_currency}']")
         print "COUNTER RATE FRAGMENT"
         print counter_rate_fragment
         puts

@@ -17,7 +17,11 @@ get '/convert' do
 	end
 
   	@amount = params[:amount].to_f
-
+  	if (!@amount.is_a?(Numeric)) || @amount<=0
+  		puts "INVALID AMOUNT ENTERED"
+  		@error = "Invalid amount entered"
+		halt erb(:home)
+  	end
 
   	@base_currency = params[:base_currency]
   	@counter_currency = params[:counter_currency]

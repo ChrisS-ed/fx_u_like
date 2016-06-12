@@ -24,7 +24,17 @@
 	<button>Convert</button>
 </form>
 
-<% if @result %>
+<% if @error %>
+  <section>
+  	<hr/>
+    <header>
+      <h1>Error!</h1>
+    </header>
+    <p><%= @error %></p>
+  </section>
+<% end %>
+
+<% if (!@error and @result) %>
   <section>
   	<hr/>
     <header>
@@ -34,3 +44,5 @@
     <p>Converted amount: <%= sprintf "%.2f", @result %> <%= @counter_currency %></p>
   </section>
 <% end %>
+
+

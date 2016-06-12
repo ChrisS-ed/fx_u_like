@@ -22,10 +22,21 @@ module ExchangeRate
 
     	# look for date in xml file
 
+        puts "*** RATES FOR DATES: ***"
+        if RATES_DATA.css("[time='#{date.to_s}']").empty? 
+            puts "EMPTY DATA"
+            # raise "Date Not Found Error"
+            @error = "Date Not Found"
+            return @error
+        end
+        puts RATES_DATA.css("[time='#{date.to_s}']")
+
     	rates_for_date = RATES_DATA.css("[time='#{date.to_s}']").children
-        # raise DateNotFound if rates_for_date.nil?
-    	print "RATES: "
+        print "RATES: "
     	puts rates_for_date
+        puts
+        
+        # raise DateNotFoundError if RATES_DATA.css("[time='#{date.to_s}']").children.empty?
 
     	# fetch base and counter rates for that date
 

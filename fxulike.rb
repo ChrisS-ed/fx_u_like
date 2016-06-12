@@ -30,7 +30,11 @@ get '/convert' do
   	puts @conversion_rate
   	puts "********************************************"
 
-  	@result = @conversion_rate * @amount
+  	if @conversion_rate.is_a?(String)
+  		@error = @conversion_rate
+  	else
+  		@result = @conversion_rate * @amount
+  	end
 
   	erb :home
 end
